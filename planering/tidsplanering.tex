@@ -15,15 +15,29 @@
 \newcommand{\R}{\cellcolor{red!25}}
 \newcommand{\RR}{\cellcolor{red!100}}
 
-\title{Exjobbstidsplanering}
+\title{Master thesis specification}
 \author{Patrik Berggren}
 \maketitle
+\section*{Overview}
+Today, there is a growing need for smarter interactions between humans and computers.
+One of those possible interactions is by doing hand gestures which requires the computer to detect and understand what handpos the hand is in.
+Handposestimation can also be useful in applications where a robot needs to learn a task by a human demonstrating for instance what type of grasp is appropriate for lifting something.
+Regardless, it is often desirable to detect the handpos from a single 2D image instead of more intrusive methods such as having a glove on.
+In the later case it is much easier to detect handposes accurately since one can then use sensors in the glove or special markings on it to effectively track in what state each joint in the hand is in.
+This master thesis will however focus on the first type.
+Here, a common approach is to extract features from the image and then use to features to estimate a handpos.
+However, it is generally difficult to find the mapping from features to handposes.
+This is because the mapping is often many to many meaning that the same handpos can give rise to different features and vice versa.
+Furthermore, this mapping is sometimes discontinous or at least not very smooth meaning that a small change in the feature or estimated handpos space may correspond to a big change in the other space.
+Previously, Akshaya Thippur Shridatta have researched different image features quality in this regard, in his master thesis "Comparative analysis of visual shape features for applications to hand pose estimation".
+This master thesis will in a sense be a continuation on Akshayas work by further investigating ways to extract image features that displays good qualities when it comes to the qualities mentioned above which is termed smoothness, generativity and discriminativity.
 
+\section*{Time plan}
 \begin{table}[!ht]
 \setlength{\tabcolsep}{2pt}
 \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
-Arbetsvecka & 
+Work week  & 
 \rotatebox{90}{0} &
 \rotatebox{90}{1} &
 \rotatebox{90}{2} &
@@ -47,7 +61,7 @@ Arbetsvecka &
 \rotatebox{90}{19} &
 \rotatebox{90}{20} \\
 \hline
-Veckonummer & 
+Week nr & 
 \rotatebox{90}{3} &
 \rotatebox{90}{4} &
 \rotatebox{90}{5} &
@@ -71,35 +85,35 @@ Veckonummer &
 \rotatebox{90}{23} &
 \rotatebox{90}{24} \\
 \hline
-Registrering & \B &&&&&&&&&&&&&&&&&&&&&  \\
+Registration & \B &&&&&&&&&&&&&&&&&&&&&  \\
 \hline
-Preliminär tidsplanering & \B &&&&&&&&&&&&&&&&&&&&&  \\
+Preliminar time plan & \B &&&&&&&&&&&&&&&&&&&&&  \\
 \hline
-Specifikation med tidsplanering & \B & \B&\BB&&&&&&&&&&&&&&&&&&&  \\
+Specification with time plan & \B & \B&\B&\BB&&&&&&&&&&&&&&&&&&  \\
 \hline
-Litteraturstudie && \B&\B& \B&\B&\B&\B&&&&&&&&&&&&&&  \\
+Study litterature && \B&\B& \B&\B&\B&\B&&&&&&&&&&&&&&  \\
 \hline
-Backgrundsdel rapport &&&\R& \R&\R&\R&\R&&&&&&&&&&&&&&  \\
+Background section in thesis &&&\R& \R&\R&\R&\R&&&&&&&&&&&&&&  \\
 \hline
-PRO1 (spec. och inläsn) &&&&&&&&\BB&&&&&&&&&&&&&  \\
+PRO1 (7.5 hp)&&&&&&&&\BB&&&&&&&&&&&&&  \\
 \hline
-Förbereda/planera genomförandet &&&&&\B&&&&&&&&&&&&&&&&  \\
+Prepare and plan implementation/tests &&&&&\B&&&&&&&&&&&&&&&&  \\
 \hline
-Implementering, tester &&&&&&\B&\B&\B&\B&\B&\B&\B&\B&&&&&&&&  \\
+Implementation, testss &&&&&&\B&\B&\B&\B&\B&\B&\B&\B&&&&&&&&  \\
 \hline
-Metoddel rapport &&&&&&&&\R&\R&&&&&&&&&&&&  \\
+Method section in thesis &&&&&&&&\R&\R&&&&&&&&&&&&  \\
 \hline
-Resultatdel rapport &&&&&&&&&&\R&\R&\R&\R&&&&&&&&  \\
+Results in thesis &&&&&&&&&&\R&\R&\R&\R&&&&&&&&  \\
 \hline
-Påsk &&&&&&&&&&&&&&\cellcolor{black!25}&&&&&&&  \\
+No work &&&&&&&&&&&&&&\cellcolor{black!25}&&&&&&&  \\
 \hline
-Analysera resultat &&&&&&&&&&&&&&&\B&\B&&&&&  \\
+Analyse results &&&&&&&&&&&&&&&\B&\B&&&&&  \\
 \hline
-Analysdel rapport &&&&&&&&&&&&&&&\R&\R&&&&&  \\
+Analyse section in thesis &&&&&&&&&&&&&&&\R&\R&&&&&  \\
 \hline
-PRO2 (75 \% av exjobb klart) &&&&&&&&&&&&&&&&&\BB&&&&  \\
+PRO2 (15 hp) &&&&&&&&&&&&&&&&&\BB&&&&  \\
 \hline
-Arbete med rapport &&&&&&&&&&&&&&&&&\R&\R&\R&&  \\
+Work with thesis &&&&&&&&&&&&&&&&&\R&\R&\R&&  \\
 \hline
 Opponering förb/genomf &&&&&&&&&&&&&&&&&&&&\B&\BB&  \\
 \hline
@@ -113,9 +127,8 @@ Avslutande av exjobb &&&&&&&&&&&&&&&&&&&&&&\BB  \\
 \caption{Röd betyder rapportarbete och blått övrigt. Inlämningsmoment är markerade med mörkare färg.}
 \end{table}
 
-Detta är så att säga idealplaneringen. När det gäller presentation och opponering så kan de skifta beroende på tidsbokning, men det jag kommer eftersträva är att göra båda i de sista veckorna. Det finns även flest opponeringstillfällen i slutet av terminen så det borde gå att hitta tillfälle då.
+När det gäller presentation och opponering så kan de skifta beroende på tidsbokning, men det jag kommer eftersträva är att göra båda i de sista veckorna. Det finns även flest opponeringstillfällen i slutet av terminen så det borde gå att hitta tillfälle då.
 
 Planeringen börjar på vecka 3, men den är angiven som arbetsvecka 0 då jag först vecka 4 kommer börja arbeta heltid med exjobbet.
-
 
 \end{document}
