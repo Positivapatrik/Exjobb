@@ -1,0 +1,190 @@
+\documentclass[12pt]{article}
+\usepackage[swedish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage{lscape}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+
+% Grupphandledningsplanering
+% http://www.kth.se/polopoly_fs/1.138963!/Menu/general/column-content/attachment/arbetsgang.pdf
+\begin{document}
+\newcommand{\B}{\cellcolor{blue!25}}
+\newcommand{\BB}{\cellcolor{blue!100}}
+\newcommand{\R}{\cellcolor{red!25}}
+\newcommand{\RR}{\cellcolor{red!100}}
+
+\title{Master thesis specification}
+\author{Patrik Berggren}
+\maketitle
+\section*{Overview and background}
+Today, there is a growing need for smarter interactions between humans and computers.
+One of those possible interactions is by doing hand gestures which requires the computer to detect and understand what hand pose the hand is in.
+Hand pose estimation can also be useful in applications where a robot needs to learn a task from human demonstrations.
+Regardless, it is often desirable to detect the hand pose from a single 2D image instead of more intrusive methods such as having a glove on.
+In the later case it is much easier to detect handposes accurately since one can then use sensors in the glove or special markings on it to effectively track in what state each joint in the hand is in.
+This master thesis will however focus on the first type.
+Here, a common approach is to extract features from the image and then use to features to estimate a hand pose.
+However, it is generally difficult to find the mapping from features to handposes.
+This is because the mapping is often many to many meaning that the same handpos can give rise to different features and vice versa.
+Furthermore, this mapping is sometimes discontinous or at least not very smooth meaning that a small change in the feature or estimated handpos space may correspond to a big change in the other space.
+Previously, Akshaya Thippur Shridatta have researched different image features quality in this regard, in his master thesis "Comparative analysis of visual shape features for applications to hand pose estimation".
+This master thesis will in a sense be a continuation on Akshayas work by further investigating ways to extract image features that displays good qualities when it comes to the qualities mentioned above which is termed smoothness, generativity and discriminativity.
+
+\section*{More detailed specification}
+Quite recently a new approach have been proposed and tested with good results when it comes to classification of images.
+More specifically, the method presented uses predefined binary classifiers that together defines a binary vector for each image.
+This binary vector is then used for the training of new classes.
+The idea is that we in the case of hand pose estimation could use a similiar appraoch, but instead of binary classifiers we will have functions from the feature space to a real number, and we will thus get a vector of real values. 
+Hopefully, this descriptor vector can then be used for regression to get the hand pose.
+The master thesis primary focus is to investigate how this descriptor can be formed and what parameters seems to work best.
+
+\subsection*{Limitations}
+\begin{itemize}
+\item
+No real hand images will be used. Instead images will be generated with libHand.
+\item
+There are many possible image feature, but I will only use HOG features, although there are different variations of HOG including parameters which will have to be investigated further.
+\item
+The focus is on the descriptor vector and so the regression step may be limited to one regression method.
+\end{itemize}
+
+\section*{Goals}
+The goal of the project would be to find a image descriptor that is well suited for regression.
+The ultimate goal is of course to be able to use the findings to be able to estimate hand poses in real life.
+This is, however, the ideal outcome, but the aim of the master thesis is at the very least to investigate how well a classeme like approach can be used in conjunction with HOG features to form regression-freindly descriptor.
+
+\section*{Equipment}
+During the project I will work with libHand and matlab.
+
+\section*{Litterature}
+Apart from Akshayas master thesis a lot of the references in his thesis will be used. Also, papers which relate to the classeme approach for classifications will also be relevant.
+\begin{itemize}
+\item
+Akshayas master thesis "Comparative Analysis of Visual Shape Features for Applications to Hand Pose Estimation" and the related article "Inferring Hand Pose: A Comparative Study of Visual Shape Features". A few of the relevant references from Akshaya is:
+\begin{itemize}
+\item
+Histograms of Oriented Gradients for Human Detection
+\item
+A Review on Vision-Based Full DOF Hand Motion Estimation
+\item
+Full dof tracking of a hand interacting with an object by modeling occlusions and physical constraints
+\item
+Spatio-Temporal Modeling of Grasping Actions
+\item
+Real-Time 3D Reconstruction of Hands in Interaction with Objects
+\end{itemize}
+\item
+Classeme related papers:
+\begin{itemize}
+\item
+Efficient Object Category Recognition Using Classemes
+\item
+PICODES: Learning a Compact Code for Novel-Category Recognition
+\item
+Meta-Class Features for Large-Scale Object Categorization on a Budget
+\end{itemize}
+\end{itemize}
+
+
+\section*{Time plan}
+\begin{table}[!ht]
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+Work week  & 
+\rotatebox{90}{0} &
+\rotatebox{90}{1} &
+\rotatebox{90}{2} &
+\rotatebox{90}{3} &
+\rotatebox{90}{4} &
+\rotatebox{90}{5} &
+\rotatebox{90}{6} &
+\rotatebox{90}{7} &
+\rotatebox{90}{8} &
+\rotatebox{90}{9} &
+\rotatebox{90}{10} &
+\rotatebox{90}{11} &
+\rotatebox{90}{12} &
+\cellcolor{black!25}&
+\rotatebox{90}{13} &
+\rotatebox{90}{14} &
+\rotatebox{90}{15} &
+\rotatebox{90}{16} &
+\rotatebox{90}{17} &
+\rotatebox{90}{18} &
+\rotatebox{90}{19} &
+\rotatebox{90}{20} \\
+\hline
+Week nr & 
+\rotatebox{90}{3} &
+\rotatebox{90}{4} &
+\rotatebox{90}{5} &
+\rotatebox{90}{6} &
+\rotatebox{90}{7} &
+\rotatebox{90}{8} &
+\rotatebox{90}{9} &
+\rotatebox{90}{10} &
+\rotatebox{90}{11} &
+\rotatebox{90}{12} &
+\rotatebox{90}{13} &
+\rotatebox{90}{14} &
+\rotatebox{90}{15} &
+\rotatebox{90}{16} &
+\rotatebox{90}{17} &
+\rotatebox{90}{18} &
+\rotatebox{90}{19} &
+\rotatebox{90}{20} &
+\rotatebox{90}{21} & 
+\rotatebox{90}{22} &
+\rotatebox{90}{23} &
+\rotatebox{90}{24} \\
+\hline
+Registration & \B &&&&&&&&&&&&&&&&&&&&&  \\
+\hline
+Preliminar time plan & \B &&&&&&&&&&&&&&&&&&&&&  \\
+\hline
+Specification with time plan & \B & \B&\B&\BB&&&&&&&&&&&&&&&&&&  \\
+\hline
+Study litterature && \B&\B& \B&\B&\B&\B&&&&&&&&&&&&&&  \\
+\hline
+Background section in thesis &&&\R& \R&\R&\R&\R&&&&&&&&&&&&&&  \\
+\hline
+PRO1 (7.5 hp)&&&&&&&&\BB&&&&&&&&&&&&&  \\
+\hline
+Prepare and plan implementation/tests &&&&&&&\B&&&&&&&&&&&&&&  \\
+\hline
+Implementation, tests &&&&&&&&\B&\B&\B&\B&\B&\B&&&&&&&&  \\
+\hline
+Method section in thesis &&&&&&&&\R&\R&&&&&&&&&&&&  \\
+\hline
+Result section in thesis &&&&&&&&&&\R&\R&\R&\R&&&&&&&&  \\
+\hline
+No work &&&&&&&&&&&&&&\cellcolor{black!25}&&&&&&&  \\
+\hline
+Analyse results &&&&&&&&&&&&&&&\B&\B&&&&&  \\
+\hline
+Analyse section in thesis &&&&&&&&&&&&&&&\R&\R&&&&&  \\
+\hline
+PRO2 (15 hp) &&&&&&&&&&&&&&&&&\BB&&&&  \\
+\hline
+Work with thesis &&&&&&&&&&&&&&&&&\R&\R&\R&&  \\
+\hline
+Opposition &&&&&&&&&&&&&&&&&&&&\B&\BB&  \\
+\hline
+Presentation &&&&&&&&&&&&&&&&&&&&\B&\B&\BB  \\
+\hline
+Final thesis &&&&&&&&&&&&&&&&&&&&\R&\R&\RR  \\
+\hline
+End of master thesis registration etc &&&&&&&&&&&&&&&&&&&&&&\BB  \\
+\hline
+\end{tabular}
+\caption{Red means work with thesis and blue means other work. A darker colour indicates that something should be submitted for registration/examination.}
+\end{table}
+
+Both presentation and opposition depends on when there is time available, but there should be time slots for both at the end of the semester, but they might nevertheless be shifted a little.
+
+The time plan begins at week 3, but it is given work week nr 0 since full time work started week 4.
+
+\end{document}
