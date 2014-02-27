@@ -1,0 +1,10 @@
+
+## LATEX FILES
+*.pdf
+*.aux
+*.out
+*.toc
+*.log
+*.bbl
+*.blg
+
