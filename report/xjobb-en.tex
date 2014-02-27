@@ -9,6 +9,9 @@
 \usepackage{modifications}
 
 %Egna paket
+%For swedish
+\usepackage[swedish]{babel}
+
 
 %For graphics
 \usepackage{graphicx}
@@ -50,7 +53,8 @@
 
 %Acknowledgements
 %Hedvig såklart för handledning, ideer, kritik, kommentarer
-%Akshaya hjälp med att sätta upp systemet, hans master uppsats, references
+%Akshaya hjälp med att sätta upp systemet, hans master uppsats, references, handledning?
+% Hjälp vid presentationsförberedelser, hjälp med korrekturläsning
 
 \begin{abstract}
 %TODO
@@ -66,27 +70,136 @@ Abstract to come
 \mainmatter
 \pagestyle{newchap}
 
-\chapter{Background}
 \section{Introduction}
 Today, there is a shift in the ways we interact with computers taking place.
 Previously, it has mainly been through keyboards and mouse, but today you find that there are touchscreens, wii, kinect and speech-recognition.
-Even though the applications are still limited, there have also been some research into hand pose estimation (HPE), meaning to estimate the hand gesture or hand pose that the user does.
-This has proved difficult, but have some important applications.
-It is of course very useful for recognizing sign language, but other applications include learning from demonstration,
-%TODO fler applikationer 
+The trend is that interactions become more intuitive and making gestures with ones hands can certainly be very intuitive.
+Therefore, a lot of research have been done to investigate what methods can be used for hand pose estimation (HPE).
+%TODO applikationer
 
 However, hand pose estimation is difficult and is generally considered that we have still to find a good approach for it.
-There are many problems involved with hand pose estimation which will be discussed later.
-One of the biggest challenges is that the hand can move in many different ways i.e. have many degrees of freedom, which makes hand tracking difficult.
-This is also a strongly contributing fact to the discontinuity between the image and the hand pose.
-Furthermore, this mapping is a many-to-many mapping which further complicates the problem.
-The goal of this thesis is, nevertheless, to overcome these problems to some degree and to hopefully contribute with a new way of doing HPE.
+One of the biggest challenges is that the hand can move in many different ways i.e. have many degrees of freedom.
+Furthermore the hand can move very rapidly and is also able to occlude itself in many poses.
+Both the high dimensionality and self occlusion contributes to the discontinuity and ambuiguity that exists between the image and the hand pose space.
+The goal of this thesis is, nevertheless, to find ways to overcome these problems to some degree and to hopefully contribute with a new way of doing HPE.
 
-The basis of this thesis is an earlier master thesis done by Akshaya Sridatta Thippur %Citera kolla namn
-in which he investigated which image features was most suitable for HPE.
-This thesis will expand that idea and continue from the image feature that was judged to have the overall best properties, which was HOG features (%Referera till section).
+The basis of this thesis is an earlier master thesis done by Akshaya Sridatta Thippur \cite{akshayaMaster} in which he investigated which image features was most suitable for HPE.
+This thesis will expand that idea and continue from one of the image features that was judged to have overall good properties, namely Histograms of Oriented Gradients (HOG) features.
  
+\chapter{Background}
 
+\section{Related work}
+
+\begin{table}[!ht]
+    %\advance\leftskip-4cm
+    \noindent\makebox[\textwidth]{%
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        First author & Type & Pose space & Feature & Disc/Gen & View & Temporal \\
+        \hline
+        Johnson \cite{combining}     
+                                    & Hand
+                                    & 30 DOFs
+                                    & HOG+seg cues 
+                                    & Disc 
+                                    & mono
+                                    & no
+        \\
+        \hline
+        Murase \cite{keyboard}     
+                                    & Hand
+                                    & keys
+                                    & HOG 
+                                    & Disc %adaboost 
+                                    & mono
+                                    & no
+        \\
+        \hline
+        Poppe \cite{exampleBased}     
+                                    & Human
+                                    & Cont %TODO
+                                    & HOG %nonOverlapp
+                                    & Disc %k-NN %Exact?
+                                    & mono+multi
+                                    & no
+        \\
+        \hline
+        Onishi \cite{pattern}     
+                                    & Human
+                                    & 24 DOFs 
+                                    & HOG %Overlapp, unsigned 
+                                    & Disc%, linear SVM
+                                    & mono
+                                    & no
+        \\
+        \hline
+        Andriluka \cite{pictorial}     
+                                    & Human
+                                    & 40 DOFs 
+                                    & Shape context 
+                                    & Gen
+                                    & mono+multi 
+                                    & no
+        \\
+        \hline
+        Campos \cite{regressionBased}     
+                                    & Hand
+                                    & 26 DOFs 
+                                    & Shape context 
+                                    & Disc%, RVM 
+                                    & mono+multi 
+                                    & no
+        \\
+        \hline
+        Agarwal \cite{recovering3D}     
+                                    & Human
+                                    & 55 DOFs 
+                                    & Shape Context 
+                                    & Disc%, RVM/SVM 
+                                    & mono
+                                    & yes
+        \\
+        \hline
+        Romero \cite{monocular}     
+                                    & Hand+Object
+                                    & 31 DOFs 
+                                    & HOG %pyramidHOG 
+                                    & Disc% k-NN %LSH
+                                    & mono
+                                    & yes
+        \\
+        \hline
+        Oikonomidis \cite{fullDOF}
+                                    & Hand
+                                    & 26 DOFs 
+                                    & SIFT
+                                    & Gen% (PSO)
+                                    & multi 
+                                    & No
+        \\
+        \hline
+        %TODO
+        %Akshaya
+        %Estimating 3D Hand Pose from a Cluttered Image
+        %Shape matching and object recognition using shape contexts
+        Dalal \cite{HOG}    & Human 
+                                    & %TODO
+                                    & HOG
+                                    & Disc %TODO
+                                    & %TODO
+                                    & No
+        \\
+        \hline
+        Lowe \cite{SIFT}            & Object 
+                                    & Discrete 
+                                    & SIFT
+                                    & Disc% k-NN
+                                    & mono
+                                    & No
+        \\
+        \hline
+    \end{tabular}}
+\end{table}
 \section{Modelling the hand}
 \subsection{Hand anatomy}
 It is important to understand the hand anatomy as that must be the basis to construct a modell.
